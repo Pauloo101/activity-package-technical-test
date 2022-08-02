@@ -21,5 +21,7 @@
     </coverage>
     <php>
         <env name="DB_CONNECTION" value="testing"/>
+         <!-- <env name="DB_CONNECTION" value="test"/> -->
+         <!-- <env name="DB_DATABASE" value=":memory:"/> -->
     </php>
 </phpunit>

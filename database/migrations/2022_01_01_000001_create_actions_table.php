@@ -14,7 +14,12 @@ return new class extends Migration {
     {
         Schema::create('actions', function(Blueprint $table) {
             $table->id();
-
+            $table->unsignedInteger("user_id");
+            $table->string("description");
+            $table->string("ip_address");
+            $table->string("model_performed_on_name");
+            $table->unsignedInteger("model_performed_on_id");
+            $table->string('summary')->nullable();
             // TODO: Create actions table
 
             $table->timestamps();

@@ -9,4 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Action extends Model
 {
     // TODO: Write logic for actions model
+
+    protected $guarded = [];
+
+    public function getDescription():string
+    {
+        return $this->description;
+    }
 }
