@@ -71,14 +71,27 @@ You may write the answers in this README as part of the submission. (If you want
 to implement the answer to some of these questions in the code then feel free,
 with some comments referencing the question and giving some context).
 
-1. What aspects of this package could be customised with a config file
+1. What aspects of this package could be customised with a config 
+    - The "actions" table_name can be customised to fit naming style of the project.
+    - The perfomer_identifier is extendable to help the developer specify a column_name but can default to the id column
+    - Adding action_model can used to extended the model funtions with the use of an interface.
+    - action_name can be used to have a default value that cooresponds custom actions as in question 5
 2. How would you go about storing more information about the event (i.e. what fields were updated, from what to what)?
+    - I would have a json column with cast collection to save "oldValue" as well as "newValue"
 3. How would you increase the security of the package, ensuring only authorised performers can see the activity for an item?
+    - The use permissions/roles and or Gates (canPerformAction) added to the boot method to check if actionPerformer has specfic role assigned.
 4. If a performer or item is deleted from the system, what would their actions say in their summary? How could this be improved?
+    - summary should contain the model object deleted, But here i would require softDelete on the performer model as that help with data consistency
 5. Suppose the developer wants to record other types of actions that are more specific, i.e. "Task was completed by ____" how could that be implemented?
+    - Accepting an action_name in the constructor and calling a "createCustomAction" directly on the model.
 6. What should be considered when developing the package to scale?
+    - I think proper documentation
+    - Batching the of "actions" as queue
 7. What should happen when an event is triggered but there is no authenticated user, e.g. in a queued job?
-
+    - For this i will make the performer model the user. 
+8. What would you change/improve if you had more time?
+    - Make use of morph relationship, therefore action performer could be any model.
+    - Extend the Action Model functions therefore a developer can implement the interface functions to meet their app criteria.
 ## Links that may be useful
 - https://laravel.com/docs/9.x/eloquent#events-using-closures
 - https://www.archybold.com/blog/post/booting-eloquent-model-traits
